@@ -1,0 +1,12 @@
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\bin\x86\Debug\winFormsForXNA.dll
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\bin\x86\Debug\winFormsForXNA.pdb
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\winFormsForXNA.csprojResolveAssemblyReference.cache
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\winFormsForXNA.dll
+D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\winFormsForXNA.pdb
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\bin\x86\Debug\winFormsForXNA.dll
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\bin\x86\Debug\winFormsForXNA.pdb
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\winFormsForXNA.dll
+F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\winFormsForXNA\obj\x86\Debug\winFormsForXNA.pdb

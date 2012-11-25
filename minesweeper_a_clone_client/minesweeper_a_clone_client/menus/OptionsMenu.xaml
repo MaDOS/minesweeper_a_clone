@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="minesweeper_a_clone_client.OptionsMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300" FontFamily="Quartz MS" MinWidth="800" MinHeight="600" Name="optionsMenu">
+    <Grid>
+        <Label Content="Theme" Height="28" HorizontalAlignment="Left" Margin="447,135,0,0" Name="lblTheme" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="588,135,0,0" Name="cmbBxTheme" VerticalAlignment="Top" Width="147" SelectionChanged="cmbBxTheme_SelectionChanged" />
+        <CheckBox Content="Download Highscores" Height="16" HorizontalAlignment="Left" Margin="249,455,0,0" Name="chkBxDownloadHighscores" VerticalAlignment="Top" />
+        <GroupBox Header="Difficulty" Height="249" HorizontalAlignment="Left" Margin="12,127,0,0" Name="grpBxDifficulty" VerticalAlignment="Top" Width="400">
+            <Grid>
+                <Label Content="Pick" Height="28" HorizontalAlignment="Left" Margin="0,15,0,0" Name="lblDifficulty" VerticalAlignment="Top" />
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="117,15,0,0" Name="cmbBxDifficulty" VerticalAlignment="Top" Width="147">
+                    <ComboBoxItem Content="hard" />
+                    <ComboBoxItem Content="medium" />
+                    <ComboBoxItem Content="easy" />
+                    <ComboBoxItem Content="--------------" />
+                    <ComboBoxItem Content="amazing" />
+                    <ComboBoxItem Content="supa easy" />
+                    <ComboBoxItem Content="1337" />
+                    <ComboBoxItem Content="blubber" />
+                </ComboBox>
+                <Separator Height="5" HorizontalAlignment="Left" Margin="6,59,0,0" Name="separator1" VerticalAlignment="Top" Width="120" />
+                <Label Content="Height" Height="28" HorizontalAlignment="Left" Margin="0,68,0,0" Name="lblHeight" VerticalAlignment="Top" />
+                <Label Content="Width" Height="28" HorizontalAlignment="Left" Margin="0,102,0,0" Name="lblWidth" VerticalAlignment="Top" />
+                <Label Content="Mines" Height="28" HorizontalAlignment="Left" Margin="0,141,0,0" Name="lblMines" VerticalAlignment="Top" />
+                <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="0,175,0,0" Name="lblNameNewDifficulty" VerticalAlignment="Top" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,70,0,0" Name="txtNewDifficultyHeight" VerticalAlignment="Top" Width="147" />
+                <Button Content="create" Height="23" HorizontalAlignment="Left" Margin="307,200,0,0" Name="btnNewDifficultyCreate" VerticalAlignment="Top" Width="75" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,104,0,0" Name="txtNewDifficultyWidth" VerticalAlignment="Top" Width="147" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,143,0,0" Name="txtNewDifficultyMines" VerticalAlignment="Top" Width="147" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,177,0,0" Name="txtNewDifficultyName" VerticalAlignment="Top" Width="147" />
+            </Grid>
+        </GroupBox>
+        <Button Content="back" Height="23" HorizontalAlignment="Left" Margin="713,565,0,0" Name="btnBack" VerticalAlignment="Top" Width="75" Click="btnBack_Click" />
+        <Button Content="Refresh" Height="23" HorizontalAlignment="Left" Margin="660,182,0,0" Name="btnRefreshThemes" VerticalAlignment="Top" Width="75" Click="btnRefreshThemes_Click" />
+    </Grid>
+</UserControl>
