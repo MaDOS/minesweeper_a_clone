@@ -115,6 +115,9 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="gameObjects\field.cs" />
+    <Compile Include="manager\contentManager.cs" />
+    <Compile Include="util\minefield.cs" />
     <None Include="backupSnippets\checkBox.cs" />
     <None Include="backupSnippets\comboBox.cs" />
     <Compile Include="theme.cs" />
@@ -144,10 +147,6 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\winFormsForXNA\winFormsForXNA.csproj">
-      <Project>{AA58BA3D-3950-4D81-A218-974027CDFFE9}</Project>
-      <Name>winFormsForXNA</Name>
-    </ProjectReference>
     <ProjectReference Include="..\minesweeper_a_clone_clientContent\minesweeper_a_clone_clientContent.contentproj">
       <Name>minesweeper_a_clone_clientContent</Name>
       <XnaReferenceType>Content</XnaReferenceType>

@@ -12,7 +12,7 @@
         <GroupBox Header="Difficulty" Height="249" HorizontalAlignment="Left" Margin="12,127,0,0" Name="grpBxDifficulty" VerticalAlignment="Top" Width="400">
             <Grid>
                 <Label Content="Pick" Height="28" HorizontalAlignment="Left" Margin="0,15,0,0" Name="lblDifficulty" VerticalAlignment="Top" />
-                <ComboBox Height="23" HorizontalAlignment="Left" Margin="117,15,0,0" Name="cmbBxDifficulty" VerticalAlignment="Top" Width="147">
+                <ComboBox Height="23" HorizontalAlignment="Left" Margin="117,15,0,0" Name="cmbBxDifficulty" VerticalAlignment="Top" Width="147" SelectionChanged="cmbBxDifficulty_SelectionChanged">
                     <ComboBoxItem Content="hard" />
                     <ComboBoxItem Content="medium" />
                     <ComboBoxItem Content="easy" />
@@ -27,7 +27,7 @@
                 <Label Content="Width" Height="28" HorizontalAlignment="Left" Margin="0,102,0,0" Name="lblWidth" VerticalAlignment="Top" />
                 <Label Content="Mines" Height="28" HorizontalAlignment="Left" Margin="0,141,0,0" Name="lblMines" VerticalAlignment="Top" />
                 <Label Content="Name" Height="28" HorizontalAlignment="Left" Margin="0,175,0,0" Name="lblNameNewDifficulty" VerticalAlignment="Top" />
-                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,70,0,0" Name="txtNewDifficultyHeight" VerticalAlignment="Top" Width="147" />
+                <TextBox Height="23" HorizontalAlignment="Left" Margin="117,70,0,0" Name="txtNewDifficultyHeight" VerticalAlignment="Top" Width="147" GotFocus="txtNewDifficultyHeight_GotFocus" LostFocus="txtNewDifficultyHeight_LostFocus" />
                 <Button Content="create" Height="23" HorizontalAlignment="Left" Margin="307,200,0,0" Name="btnNewDifficultyCreate" VerticalAlignment="Top" Width="75" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="117,104,0,0" Name="txtNewDifficultyWidth" VerticalAlignment="Top" Width="147" />
                 <TextBox Height="23" HorizontalAlignment="Left" Margin="117,143,0,0" Name="txtNewDifficultyMines" VerticalAlignment="Top" Width="147" />

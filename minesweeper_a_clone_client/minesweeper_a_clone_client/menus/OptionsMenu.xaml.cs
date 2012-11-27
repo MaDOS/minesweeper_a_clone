@@ -43,5 +43,35 @@ namespace minesweeper_a_clone_client
             guiManager.newThemeName = this.cmbBxTheme.SelectedItem.ToString();
             guiManager.themeChanged = true;
         }
+
+        private void cmbBxDifficulty_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.cmbBxDifficulty.SelectedItem.ToString() == "easy")
+            {
+                guiManager.choosenDifficulty = guiManager.dificulty.easy;
+            }
+            else if (this.cmbBxDifficulty.SelectedItem.ToString() == "medium")
+            {
+                guiManager.choosenDifficulty = guiManager.dificulty.medium;
+            }
+            else if (this.cmbBxDifficulty.SelectedItem.ToString() == "hard")
+            {
+                guiManager.choosenDifficulty = guiManager.dificulty.hard;
+            }
+            else
+            {
+                guiManager.choosenDifficulty = guiManager.dificulty.other;
+            }
+        }
+
+        private void txtNewDifficultyHeight_GotFocus(object sender, RoutedEventArgs e)
+        {
+            guiManager.txtNewDifficultyHeightFocused = true;
+        }
+
+        private void txtNewDifficultyHeight_LostFocus(object sender, RoutedEventArgs e)
+        {
+            guiManager.txtNewDifficultyHeightFocused = false;
+        }
     }
 }

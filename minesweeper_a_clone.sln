@@ -1,13 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minesweeper_a_clone_client", "minesweeper_a_clone_client\minesweeper_a_clone_client\minesweeper_a_clone_client.csproj", "{53E297C3-6656-4B59-A1B0-105C006DE079}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minesweeper_a_clone_clientContent", "minesweeper_a_clone_client\minesweeper_a_clone_clientContent\minesweeper_a_clone_clientContent.contentproj", "{F065C241-1CBB-4784-B8A8-9A98A1F86FA8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "winFormsForXNA", "winFormsForXNA\winFormsForXNA.csproj", "{AA58BA3D-3950-4D81-A218-974027CDFFE9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "minesweeper_a_clone_client_winForms", "minesweeper_a_clone_client_winForms\minesweeper_a_clone_client_winForms.csproj", "{8D2CD108-DDCD-43F5-83B3-4D51F8229CE2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +17,6 @@ Global
 		{53E297C3-6656-4B59-A1B0-105C006DE079}.Release|x86.Build.0 = Release|x86
 		{F065C241-1CBB-4784-B8A8-9A98A1F86FA8}.Debug|x86.ActiveCfg = Debug|x86
 		{F065C241-1CBB-4784-B8A8-9A98A1F86FA8}.Release|x86.ActiveCfg = Release|x86
-		{AA58BA3D-3950-4D81-A218-974027CDFFE9}.Debug|x86.ActiveCfg = Debug|x86
-		{AA58BA3D-3950-4D81-A218-974027CDFFE9}.Debug|x86.Build.0 = Debug|x86
-		{AA58BA3D-3950-4D81-A218-974027CDFFE9}.Release|x86.ActiveCfg = Release|x86
-		{AA58BA3D-3950-4D81-A218-974027CDFFE9}.Release|x86.Build.0 = Release|x86
-		{8D2CD108-DDCD-43F5-83B3-4D51F8229CE2}.Debug|x86.ActiveCfg = Debug|x86
-		{8D2CD108-DDCD-43F5-83B3-4D51F8229CE2}.Debug|x86.Build.0 = Debug|x86
-		{8D2CD108-DDCD-43F5-83B3-4D51F8229CE2}.Release|x86.ActiveCfg = Release|x86
-		{8D2CD108-DDCD-43F5-83B3-4D51F8229CE2}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

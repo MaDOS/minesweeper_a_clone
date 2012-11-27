@@ -42,60 +42,46 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="buttons\button_highscore.bmp">
-      <Name>button_highscore</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="buttons\button_options.bmp">
-      <Name>button_options</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="buttons\button_play.bmp">
-      <Name>button_play</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="buttons\button_quit.bmp">
-      <Name>button_quit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="buttons\button_default.bmp">
-      <Name>button_default</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="sprFntMainMenuTitle.spritefont">
+    <Compile Include="default\sprFntMainMenuTitle.spritefont">
       <Name>sprFntMainMenuTitle</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="space.bmp">
-      <Name>space</Name>
+    <Compile Include="default\field_markedAsMine.bmp">
+      <Name>field_markedAsMine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="default\field_markedPossibleMine.bmp">
+      <Name>field_markedPossibleMine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="default\field_none.bmp">
+      <Name>field_none</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="default\field_unrevealed.bmp">
+      <Name>field_unrevealed</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="testgame\testGameFont.spritefont">
-      <Name>testGameFont</Name>
+    <Compile Include="default\field_mine.bmp">
+      <Name>field_mine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="default\sprFntMinesNearby.spritefont">
+      <Name>sprFntMinesNearby</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="testgame\testplayer.bmp">
-      <Name>testplayer</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

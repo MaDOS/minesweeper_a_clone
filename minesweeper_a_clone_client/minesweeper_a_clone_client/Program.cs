@@ -14,6 +14,7 @@ namespace minesweeper_a_clone_client
         [STAThread()]
         static void Main(string[] args)
         {
+            
             using (msgame game = new msgame())
             {
                 game.Run();

@@ -2,85 +2,67 @@
 <XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
   <Asset Type="Pipeline:BuildItemCollection">
     <Item>
-      <Source>buttons\button_highscore.bmp</Source>
-      <Name>buttons\button_highscore</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\buttons\button_highscore.xnb</Output>
-      <Time>2012-11-14T19:45:59.8641797+01:00</Time>
-    </Item>
-    <Item>
-      <Source>buttons\button_options.bmp</Source>
-      <Name>buttons\button_options</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\buttons\button_options.xnb</Output>
-      <Time>2012-11-14T19:46:00.1441801+01:00</Time>
-    </Item>
-    <Item>
-      <Source>buttons\button_play.bmp</Source>
-      <Name>buttons\button_play</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\buttons\button_play.xnb</Output>
-      <Time>2012-11-14T19:46:00.1641801+01:00</Time>
-    </Item>
-    <Item>
-      <Source>buttons\button_quit.bmp</Source>
-      <Name>buttons\button_quit</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\buttons\button_quit.xnb</Output>
-      <Time>2012-11-14T19:46:00.2041802+01:00</Time>
-    </Item>
-    <Item>
-      <Source>buttons\button_default.bmp</Source>
-      <Name>buttons\button_default</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\buttons\button_default.xnb</Output>
-      <Time>2012-11-14T20:09:41.1880742+01:00</Time>
-    </Item>
-    <Item>
-      <Source>space.bmp</Source>
-      <Name>space</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\space.xnb</Output>
-      <Time>2012-11-15T16:49:28.6479972+01:00</Time>
-    </Item>
-    <Item>
-      <Source>testgame\testplayer.bmp</Source>
-      <Name>testgame\testplayer</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\testgame\testplayer.xnb</Output>
-      <Time>2012-11-15T20:41:52.5987928+01:00</Time>
-    </Item>
-    <Item>
-      <Source>sprFntMainMenuTitle.spritefont</Source>
-      <Name>sprFntMainMenuTitle</Name>
+      <Source>default\sprFntMainMenuTitle.spritefont</Source>
+      <Name>default\sprFntMainMenuTitle</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\sprFntMainMenuTitle.xnb</Output>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMainMenuTitle.xnb</Output>
       <Time>2012-11-14T21:46:45.572638+01:00</Time>
     </Item>
     <Item>
-      <Source>testgame\testGameFont.spritefont</Source>
-      <Name>testgame\testGameFont</Name>
+      <Source>default\field_markedAsMine.bmp</Source>
+      <Name>default\field_markedAsMine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedAsMine.xnb</Output>
+      <Time>2012-11-27T17:39:11.282058+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\field_markedPossibleMine.bmp</Source>
+      <Name>default\field_markedPossibleMine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedPossibleMine.xnb</Output>
+      <Time>2012-11-27T17:39:11.2910585+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\field_none.bmp</Source>
+      <Name>default\field_none</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_none.xnb</Output>
+      <Time>2012-11-27T17:39:11.3840639+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\field_unrevealed.bmp</Source>
+      <Name>default\field_unrevealed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_unrevealed.xnb</Output>
+      <Time>2012-11-27T17:39:11.4120655+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\field_mine.bmp</Source>
+      <Name>default\field_mine</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_mine.xnb</Output>
+      <Time>2012-11-27T18:54:43.1472659+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\sprFntMinesNearby.spritefont</Source>
+      <Name>default\sprFntMinesNearby</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\testgame\testGameFont.xnb</Output>
-      <Time>2012-11-15T19:57:19.6184815+01:00</Time>
+      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMinesNearby.xnb</Output>
+      <Time>2012-11-27T21:45:31.585443+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -88,39 +70,39 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\</RootDirectory>
-      <LoggerRootDirectory>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\</LoggerRootDirectory>
-      <IntermediateDirectory>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>F:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\</RootDirectory>
+      <LoggerRootDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\</LoggerRootDirectory>
+      <IntermediateDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
-        <Value>2010-08-23T13:41:18+02:00</Value>
+        <Value>2010-08-23T12:41:18+02:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
-        <Value>2012-11-23T10:12:43.9943508+01:00</Value>
+        <Value>2012-10-27T19:00:04.2686058+02:00</Value>
       </Assembly>
     </Assemblies>
   </Asset>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.ComponentModel;
 using System.Text;
 using System.Threading;
+using minesweeper_a_clone_client.manager;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
@@ -34,7 +35,7 @@ namespace minesweeper_a_clone_client
         HighscoreMenu highscoreMenu; 
         ElementHost menuHost = new ElementHost();
 
-        SpriteFont fntMainMenuTitle;
+        util.Minefield minefield;
 
         ThemeManager themeManager;
 
@@ -99,7 +100,13 @@ namespace minesweeper_a_clone_client
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            fntMainMenuTitle = Content.Load<SpriteFont>(@"sprFntMainMenuTitle");
+            contentManager.fntMinesNerby = Content.Load<SpriteFont>(@"default\sprFntMinesNearby");
+
+            contentManager.fieldTexUnrevealed = Content.Load<Texture2D>(@"default\field_unrevealed");
+            contentManager.fieldTexNone = Content.Load<Texture2D>(@"default\field_none");
+            contentManager.fieldTexMarkedAsMine = Content.Load<Texture2D>(@"default\field_markedAsMine");
+            contentManager.fieldTexMarkedPossibleMine = Content.Load<Texture2D>(@"default\field_markedPossibleMine");
+            contentManager.fieldTexMine = Content.Load<Texture2D>(@"default\field_mine");
         }
 
         /// <summary>
@@ -122,6 +129,7 @@ namespace minesweeper_a_clone_client
             if (gsCurrentGamestate == GameState.playing) //in-game update
             {
                 //playing
+                this.minefield.Update(gameTime, Mouse.GetState());
             }
             else
             {
@@ -132,8 +140,10 @@ namespace minesweeper_a_clone_client
                     //##################################################################main menu update
                         if (guiManager.btnPlayPressed) //mainMenu - btnPlay
                         {
-                            runtestgame();
+                            minefield = new util.Minefield(10, 10, 35, new Vector2(40.0f, 40.0f));
+                            this.menuHost.Visible = false;
 
+                            this.gsCurrentGamestate = GameState.playing;
                             guiManager.btnPlayPressed = false;
                         }
                         else if (guiManager.btnOptionsPressed) //mainMenu - btnOptions
@@ -171,13 +181,13 @@ namespace minesweeper_a_clone_client
                         }
                         break;
                     case GameState.highscores:
+                        //##################################################################highscore menu upate
                         if (guiManager.btnBackPressed)
                         {
                             this.gsCurrentGamestate = GameState.mainMenu;
                             this.menuHost.Child = this.mainMenu;
                             guiManager.btnBackPressed = false;
                         }
-                    //##################################################################highscore menu upate
                         break;
                 }
             }
@@ -200,8 +210,12 @@ namespace minesweeper_a_clone_client
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-           
-            spriteBatch.DrawString(fntMainMenuTitle, "minesweeper a clone", new Vector2(10, 10), Color.White);
+
+            if (gsCurrentGamestate == GameState.playing) //in-game update
+            {
+                //playing
+                this.minefield.Draw(gameTime, spriteBatch);
+            }
 
             spriteBatch.End();
 
