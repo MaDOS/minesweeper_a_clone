@@ -10,26 +10,29 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Windows.Forms;
 
-
 namespace minesweeper_a_clone_client
 {
     public class Field
     {
         Vector2 pos;
         Rectangle rect;
+        int minesNearby;
+        bool rightMouseButtonWasReleased; //preventing from toggling right clicks to fast
+
         public int mineFieldCoordsX;
         public int mineFieldCoordsY;
         public bool isMine;
         public Texture2D texture;
         public SpriteFont font;
         public FieldState fsFieldState;
+
         Field[,] map;
 
         public enum FieldState
         {
             mine, //after game is lost to maybe have something that the gamelogic displays as bomb/explosion
             unrevealed,//not revealed yet
-            none, //revealed and no mines nearby
+            revealed, //revealed and no mines nearby
             minesNearby, //number of mines nerby
             markedAsMine, //flag
             markedPossibleMine //question mark
@@ -48,16 +51,33 @@ namespace minesweeper_a_clone_client
             this.rect = new Rectangle((int)pos.X, (int)pos.Y, 16, 16);
         }
 
-        public void showField(int x, int y)
+        public void revealField()
         {
-            int minesNearby = getMinesNerby(x, y);
-
-            if (map[x, y].isMine)//game over
+            if (this.fsFieldState != FieldState.unrevealed)
+            {
+                return;
+            }
+            else if (this.isMine)
             {
                 this.fsFieldState = FieldState.mine;
-                this.texture = manager.contentManager.fieldTexMine;
             }
-            else if (minesNearby != 0)//<minesNearby> mines nearby
+
+            int x = this.mineFieldCoordsX;
+            int y = this.mineFieldCoordsY;
+
+            if (this.isMine)
+            {
+                if (this.fsFieldState != FieldState.markedAsMine) //don't reveal marked mines as mines if the game ends
+                {
+                    this.texture = manager.contentManager.fieldTexMine;
+                }
+
+                if (manager.gameManager.currentGameState != manager.gameManager.GameState.won) //if not already won and a mine is revealed -> game over
+                {
+                    manager.gameManager.currentGameState = manager.gameManager.GameState.lost; //game over
+                }
+            }
+            else if (this.minesNearby != 0)//<this.minesNearby> mines nearby
             {
                 this.fsFieldState = FieldState.minesNearby;
                 this.texture = manager.contentManager.fieldTexNone;
@@ -65,303 +85,414 @@ namespace minesweeper_a_clone_client
             else //empty field
             {
                 this.texture = manager.contentManager.fieldTexNone;
-                this.fsFieldState = FieldState.none;
+                this.fsFieldState = FieldState.revealed;
 
-                try
+                //812
+                //7#3
+                //654
+
+                if (x == 0) //rand links ###
                 {
-                    showField(x, y - 1);//1
+                    map[x + 1, y].revealField();//3
+
+                    if (y == 0) //rand links + oben
+                    {
+                        map[x + 1, y + 1].revealField();//4
+                        map[x, y + 1].revealField();//5
+                    }
+                    else if (y == (map.GetLength(1) - 1)) //rand links + unten
+                    {
+                        map[x, y - 1].revealField();//1
+                        map[x + 1, y - 1].revealField();//2
+                    }
+                    else //rand nur links
+                    {
+                        map[x, y - 1].revealField();//1
+                        map[x + 1, y - 1].revealField();//2
+                        map[x + 1, y + 1].revealField();//4
+                        map[x, y + 1].revealField();//5
+                    }
                 }
-                catch (Exception ex)
-                { }
-                try
+                else if (x == (map.GetLength(0) - 1)) //rand rechts ###
                 {
-                    showField(x + 1, y - 1);//2
+                    map[x - 1, y].revealField();//7
+
+                    if (y == 0) //rand rechts + oben
+                    {
+                        map[x, y + 1].revealField();//5
+                        map[x - 1, y + 1].revealField();//6
+                    }
+                    else if (y == (map.GetLength(1) - 1)) //rand rechts + unten
+                    {
+                        map[x, y - 1].revealField();//1
+                        map[x - 1, y - 1].revealField();//8
+                    }
+                    else //rand nur rechts
+                    {
+                        map[x, y - 1].revealField();//1
+                        map[x, y + 1].revealField();//5
+                        map[x - 1, y + 1].revealField();//6
+                        map[x - 1, y - 1].revealField();//8
+                    }
+
                 }
-                catch (Exception ex)
-                { }
-                try
+                else if (y == 0) //rand oben
                 {
-                    showField(x + 1, y);//3
+                    map[x, y + 1].revealField();//5
+
+                    if (x == 0) //rand oben + links
+                    {
+                        map[x + 1, y].revealField();//3
+                        map[x + 1, y + 1].revealField();//4
+                    }
+                    else if (x == (map.GetLength(0) - 1)) //rand oben + rechts
+                    {
+                        map[x - 1, y + 1].revealField();//6
+                        map[x - 1, y].revealField();//7
+                    }
+                    else //rand nur oben
+                    {
+                        map[x + 1, y].revealField();//3
+                        map[x + 1, y + 1].revealField();//4
+                        map[x - 1, y + 1].revealField();//6
+                        map[x - 1, y].revealField();//7
+                    }
                 }
-                catch (Exception ex)
-                { }
-                try
+                else if (y == (map.GetLength(1) - 1)) //rand unten
                 {
-                    showField(x + 1, y + 1);//4
+                    map[x, y - 1].revealField();//1
+
+                    if (x == 0) //rand unten + links
+                    {
+                        map[x + 1, y - 1].revealField();//2
+                        map[x + 1, y].revealField();//3
+                    }
+                    else if (x == (map.GetLength(0) - 1)) //rand unten + rechts
+                    {
+                        map[x - 1, y].revealField();//7
+                        map[x - 1, y - 1].revealField();//8
+                    }
+                    else //rand nur unten
+                    {
+                        map[x + 1, y - 1].revealField();//2
+                        map[x + 1, y].revealField();//3
+                        map[x - 1, y].revealField();//7
+                        map[x - 1, y - 1].revealField();//8
+                    }
                 }
-                catch (Exception ex)
-                { }
-                try
+                else //kein rand
                 {
-                    showField(x, y + 1);//5
+                    map[x, y - 1].revealField();//1
+                    map[x + 1, y - 1].revealField();//2
+                    map[x + 1, y].revealField();//3
+                    map[x + 1, y + 1].revealField();//4
+                    map[x, y + 1].revealField();//5
+                    map[x - 1, y + 1].revealField();//6
+                    map[x - 1, y].revealField();//7
+                    map[x - 1, y - 1].revealField();//8
                 }
-                catch (Exception ex)
-                { }
-                try
-                {
-                    showField(x - 1, y + 1);//6
-                }
-                catch (Exception ex)
-                { }
-                try
-                {
-                    showField(x - 1, y);//7
-                }
-                catch (Exception ex)
-                { }
-                try
-                {
-                    showField(x - 1, y - 1);//8
-                }
-                catch (Exception ex)
-                { }
             }
+
+            manager.gameManager.isWon(ref map);
         }
 
-        private int getMinesNerby(int x, int y)
+        public void calcMinesNerby()
         {
-            int countMinesNearby = 0;
+            int countminesNearby = 0;
+            int x = this.mineFieldCoordsX;
+            int y = this.mineFieldCoordsY;
             //812
             //7#3
             //654
-            //if (x == 0) //rand links ###
-            //{
-            //    if (map[x + 1, y].isMine)//3
-            //    {
-            //        countMinesNearby++;
-            //    }
-
-            //    if (y == 0) //rand links + oben
-            //    {
-            //        if (map[x + 1, y + 1].isMine)//4
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x, y + 1].isMine)//5
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //    else if (y == map.GetLength(1)) //rand links + unten
-            //    {
-            //        if (map[x, y - 1].isMine)//1
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x + 1, y - 1].isMine)//2
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //    else //rand nur links
-            //    {
-            //        if (map[x, y - 1].isMine)//1
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x + 1, y - 1].isMine)//2
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x + 1, y + 1].isMine)//4
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x, y + 1].isMine)//5
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //}
-            //else if (x == map.GetLength(0)) //rand rechts ###
-            //{
-            //    if (map[x - 1, y].isMine)//7
-            //    {
-            //        countMinesNearby++;
-            //    }
-
-            //    if (y == 0) //rand rechts + oben
-            //    {
-            //        if (map[x, y + 1].isMine)//5
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x - 1, y + 1].isMine)//6
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //    else if (y == map.GetLength(1)) //rand rechts + unten
-            //    {
-            //        if (map[x, y - 1].isMine)//1
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x - 1, y - 1].isMine)//8
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //    else //rand nur rechts
-            //    {
-            //        if (map[x, y - 1].isMine)//1
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x, y + 1].isMine)//5
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x - 1, y + 1].isMine)//6
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //        if (map[x - 1, y - 1].isMine)//8
-            //        {
-            //            countMinesNearby++;
-            //        }
-            //    }
-            //}
-            //else //kein rand rechts oder links
-            //{
-            //    if (map[x, y - 1].isMine)//1
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x + 1, y - 1].isMine)//2
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x + 1, y].isMine)//3
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x + 1, y + 1].isMine)//4
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x, y + 1].isMine)//5
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x - 1, y + 1].isMine)//6
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x - 1, y].isMine)//7
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //    if (map[x - 1, y - 1].isMine)//8
-            //    {
-            //        countMinesNearby++;
-            //    }
-            //}
-            try
-            {
-                if (map[x, y - 1].isMine)//1
-                {
-                    countMinesNearby++;
-                }
-            }
-            catch (Exception ex)
-            { }
-
-            try
-            {
-                if (map[x + 1, y - 1].isMine)//2
-                {
-                    countMinesNearby++;
-                }
-            }
-            catch (Exception ex)
-            { }
-
-            try
+            if (x == 0) //rand links ###
             {
                 if (map[x + 1, y].isMine)//3
                 {
-                    countMinesNearby++;
+                    countminesNearby++;
                 }
-            }
-            catch (Exception ex)
-            { }
 
-            try
-            {
-                if (map[x + 1, y + 1].isMine)//4
+                if (y == 0) //rand links + oben
                 {
-                    countMinesNearby++;
+                    if (map[x + 1, y + 1].isMine)//4
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x, y + 1].isMine)//5
+                    {
+                        countminesNearby++;
+                    }
                 }
-            }
-            catch (Exception ex)
-            { }
-
-            try
-            {
-                if (map[x, y + 1].isMine)//5
+                else if (y == (map.GetLength(1) - 1)) //rand links + unten
                 {
-                    countMinesNearby++;
+                    if (map[x, y - 1].isMine)//1
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y - 1].isMine)//2
+                    {
+                        countminesNearby++;
+                    }
                 }
-            }
-            catch (Exception ex)
-            { }
-
-            try
-            {
-                if (map[x - 1, y + 1].isMine)//6
+                else //rand nur links
                 {
-                    countMinesNearby++;
+                    if (map[x, y - 1].isMine)//1
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y - 1].isMine)//2
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y + 1].isMine)//4
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x, y + 1].isMine)//5
+                    {
+                        countminesNearby++;
+                    }
                 }
             }
-            catch (Exception ex)
-            { }
-
-            try
+            else if (x == (map.GetLength(0) - 1)) //rand rechts ###
             {
                 if (map[x - 1, y].isMine)//7
                 {
-                    countMinesNearby++;
+                    countminesNearby++;
+                }
+
+                if (y == 0) //rand rechts + oben
+                {
+                    if (map[x, y + 1].isMine)//5
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y + 1].isMine)//6
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else if (y == (map.GetLength(1) - 1)) //rand rechts + unten
+                {
+                    if (map[x, y - 1].isMine)//1
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y - 1].isMine)//8
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else //rand nur rechts
+                {
+                    if (map[x, y - 1].isMine)//1
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x, y + 1].isMine)//5
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y + 1].isMine)//6
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y - 1].isMine)//8
+                    {
+                        countminesNearby++;
+                    }
+                }
+                
+            }
+            else if (y == 0) //rand oben
+            {
+                if (map[x, y + 1].isMine)//5
+                {
+                    countminesNearby++;
+                }
+
+                if (x == 0) //rand oben + links
+                {
+                    if (map[x + 1, y].isMine)//3
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y + 1].isMine)//4
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else if (x == (map.GetLength(0) - 1)) //rand oben + rechts
+                {
+                    if (map[x - 1, y + 1].isMine)//6
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y].isMine)//7
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else //rand nur oben
+                {
+                    if (map[x + 1, y].isMine)//3
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y + 1].isMine)//4
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y + 1].isMine)//6
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y].isMine)//7
+                    {
+                        countminesNearby++;
+                    }
                 }
             }
-            catch (Exception ex)
-            { }
-
-            try
+            else if (y == (map.GetLength(1) - 1)) //rand unten
             {
+                if (map[x, y - 1].isMine)//1
+                {
+                    countminesNearby++;
+                }
+
+                if (x == 0) //rand unten + links
+                {
+                    if (map[x + 1, y - 1].isMine)//2
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y].isMine)//3
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else if (x == (map.GetLength(0) - 1)) //rand unten + rechts
+                {
+                    if (map[x - 1, y].isMine)//7
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y - 1].isMine)//8
+                    {
+                        countminesNearby++;
+                    }
+                }
+                else //rand nur unten
+                {
+                    if (map[x + 1, y - 1].isMine)//2
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x + 1, y].isMine)//3
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y].isMine)//7
+                    {
+                        countminesNearby++;
+                    }
+                    if (map[x - 1, y - 1].isMine)//8
+                    {
+                        countminesNearby++;
+                    }
+                }
+            }
+            else //kein rand
+            {
+                if (map[x, y - 1].isMine)//1
+                {
+                    countminesNearby++;
+                }
+                if (map[x + 1, y - 1].isMine)//2
+                {
+                    countminesNearby++;
+                }
+                if (map[x + 1, y].isMine)//3
+                {
+                    countminesNearby++;
+                }
+                if (map[x + 1, y + 1].isMine)//4
+                {
+                    countminesNearby++;
+                }
+                if (map[x, y + 1].isMine)//5
+                {
+                    countminesNearby++;
+                }
+                if (map[x - 1, y + 1].isMine)//6
+                {
+                    countminesNearby++;
+                }
+                if (map[x - 1, y].isMine)//7
+                {
+                    countminesNearby++;
+                }
                 if (map[x - 1, y - 1].isMine)//8
                 {
-                    countMinesNearby++;
+                    countminesNearby++;
                 }
             }
-            catch (Exception ex)
-            { }
 
-            return countMinesNearby;
+            this.minesNearby = countminesNearby;
         }
 
         public void Update(GameTime gameTime, MouseState mouse)
         {
             Rectangle mouseRect = new Rectangle(mouse.X, mouse.Y, 1, 1);
 
-            if (this.rect.Intersects(mouseRect) && mouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+            if (this.rect.Intersects(mouseRect))
             {
-                //field clicked
-                showField(this.mineFieldCoordsX, this.mineFieldCoordsY);
-            }
-            else if (this.rect.Intersects(mouseRect) && mouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
-            {
-                //field right-clicked: "flag -> question mark -> normal" cycle
+                if (mouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Released && !this.rightMouseButtonWasReleased)
+                {
+                    //mouse button was released since last time he was pressed
+                    this.rightMouseButtonWasReleased = true; //prevention from toggling to fast
+                }
+
+                if (mouse.LeftButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed)
+                {
+                    //field left-clicked
+                    if (this.fsFieldState == FieldState.unrevealed || this.fsFieldState == FieldState.markedPossibleMine)
+                    {
+                        this.revealField();
+                    }
+                }
+                else if (mouse.RightButton == Microsoft.Xna.Framework.Input.ButtonState.Pressed) //field right-clicked: "flag -> question mark -> normal" cycle
+                {
+                    if (this.rightMouseButtonWasReleased) //prevention from toggling to fast
+                    {
+                        if (this.fsFieldState == FieldState.unrevealed)
+                        {
+                            this.fsFieldState = FieldState.markedAsMine;
+                            this.texture = manager.contentManager.fieldTexMarkedAsMine;
+                        }
+                        else if (this.fsFieldState == FieldState.markedAsMine) //marked with flag
+                        {
+                            this.fsFieldState = FieldState.markedPossibleMine;
+                            this.texture = manager.contentManager.fieldTexMarkedPossibleMine;
+                        }
+                        else if (this.fsFieldState == FieldState.markedPossibleMine) //marked with ?
+                        {
+                            this.fsFieldState = FieldState.unrevealed;
+                            this.texture = manager.contentManager.fieldTexUnrevealed;
+                        }
+                        this.rightMouseButtonWasReleased = false; //preventing from toggling right clicks to fast
+                    }
+                }
             }
         }
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, rect, Color.White);
+            spriteBatch.Draw(this.texture, rect, Color.White);
             if (this.fsFieldState == FieldState.minesNearby)
             {
-                spriteBatch.DrawString(font, getMinesNerby(this.mineFieldCoordsX, this.mineFieldCoordsY).ToString(), new Vector2(pos.X + 5, pos.Y), Color.Yellow);
+                spriteBatch.DrawString(this.font, this.minesNearby.ToString(), new Vector2(this.pos.X + 5, this.pos.Y), Color.Yellow);
             }
         }
+
     }
 }

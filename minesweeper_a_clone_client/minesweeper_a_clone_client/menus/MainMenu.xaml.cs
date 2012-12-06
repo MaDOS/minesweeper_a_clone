@@ -12,36 +12,13 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace minesweeper_a_clone_client
+namespace minesweeper_a_clone_client.menus
 {
-    /// <summary>
-    /// Interaktionslogik für MainMenu.xaml
-    /// </summary>
     public partial class MainMenu : UserControl
     {
         public MainMenu()
         {
             InitializeComponent();
-        }
-
-        private void btnPlay_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnPlayPressed = true;
-        }
-
-        private void btnOptions_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnOptionsPressed = true;
-        }
-
-        private void btnHighscores_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnHighscoresPressed = true;
-        }
-
-        private void btnQuit_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnQuitPressed = true;
         }
     }
 }

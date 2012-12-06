@@ -11,67 +11,63 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Forms.Integration;
 
-namespace minesweeper_a_clone_client
+namespace minesweeper_a_clone_client.menus
 {
-    /// <summary>
-    /// Interaktionslogik für optionsMenu.xaml
-    /// </summary>
     public partial class OptionsMenu : UserControl
     {
         public OptionsMenu()
         {
             InitializeComponent();
-        }
 
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnBackPressed = true;
-        }
+            //load difficulties
+            this.cmbBxDifficulty.Items.Add(manager.difficultyManager.officialEasy.name);
+            this.cmbBxDifficulty.Items.Add(manager.difficultyManager.officialMedium.name);
+            this.cmbBxDifficulty.Items.Add(manager.difficultyManager.officialHard.name);
 
-        private void btnRefreshThemes_Click(object sender, RoutedEventArgs e)
-        {
-            ThemeManager.loadThemes(msgame.Directory + @"\themes");
-            foreach (string themeName in ThemeManager.themes.Keys)
+            foreach(util.Difficulty difficulty in manager.difficultyManager.unofficialDifficulties.Values)
+            {
+                this.cmbBxDifficulty.Items.Add(difficulty.name);
+            }
+
+            //load installed themes
+            manager.ThemeManager.loadThemes(manager.gameManager.Directory + @"\themes");
+            foreach (string themeName in manager.ThemeManager.themes.Keys)
             {
                 cmbBxTheme.Items.Add(themeName);
             }
+
+            //load settings
+            //this.chkBxDownloadHighscores.IsChecked = (bool)manager.SettingsManager.settings[manager.SettingsManager.settingType.onlineHighscores];
+            //this.cmbBxDifficulty.SelectedItem = (string)manager.SettingsManager.settings[manager.SettingsManager.settingType.selectedDifficulty];
+            //this.cmbBxTheme.SelectedItem = (string)manager.SettingsManager.settings[manager.SettingsManager.settingType.selectedTheme];
         }
 
         private void cmbBxTheme_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            guiManager.newThemeName = this.cmbBxTheme.SelectedItem.ToString();
-            guiManager.themeChanged = true;
+            manager.ThemeManager.applyTheme(this.cmbBxTheme.SelectedItem.ToString());
         }
 
         private void cmbBxDifficulty_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (this.cmbBxDifficulty.SelectedItem.ToString() == "easy")
+            string name = this.cmbBxDifficulty.SelectedItem.ToString();
+            if (name == "easy")
             {
-                guiManager.choosenDifficulty = guiManager.dificulty.easy;
+                manager.gameManager.currentDifficulty = manager.difficultyManager.officialEasy;
             }
-            else if (this.cmbBxDifficulty.SelectedItem.ToString() == "medium")
+            else if (name == "medium")
             {
-                guiManager.choosenDifficulty = guiManager.dificulty.medium;
+                manager.gameManager.currentDifficulty = manager.difficultyManager.officialMedium;
             }
-            else if (this.cmbBxDifficulty.SelectedItem.ToString() == "hard")
+            else if (name == "hard")
             {
-                guiManager.choosenDifficulty = guiManager.dificulty.hard;
+                manager.gameManager.currentDifficulty = manager.difficultyManager.officialHard;
             }
             else
             {
-                guiManager.choosenDifficulty = guiManager.dificulty.other;
+                manager.gameManager.currentDifficulty = manager.difficultyManager.unofficialDifficulties[name];
             }
-        }
-
-        private void txtNewDifficultyHeight_GotFocus(object sender, RoutedEventArgs e)
-        {
-            guiManager.txtNewDifficultyHeightFocused = true;
-        }
-
-        private void txtNewDifficultyHeight_LostFocus(object sender, RoutedEventArgs e)
-        {
-            guiManager.txtNewDifficultyHeightFocused = false;
         }
     }
 }

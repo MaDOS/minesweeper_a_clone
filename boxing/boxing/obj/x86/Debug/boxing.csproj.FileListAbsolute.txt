@@ -1,0 +1,5 @@
+C:\Users\l00s3s\AppData\Local\Temporary Projects\boxing\bin\Debug\boxing.exe
+C:\Users\l00s3s\AppData\Local\Temporary Projects\boxing\bin\Debug\boxing.pdb
+C:\Users\l00s3s\AppData\Local\Temporary Projects\boxing\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\l00s3s\AppData\Local\Temporary Projects\boxing\obj\x86\Debug\boxing.exe
+C:\Users\l00s3s\AppData\Local\Temporary Projects\boxing\obj\x86\Debug\boxing.pdb

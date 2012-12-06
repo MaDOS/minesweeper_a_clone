@@ -20,14 +20,14 @@ namespace minesweeper_a_clone_client.util
         int sizeX, sizeY, mines;
         Vector2 displayPos;
 
-        public Minefield(int sizeX, int sizeY, int mines, Vector2 displayPos)
+        public Minefield(Difficulty difficulty, Vector2 displayPos)
         {
-            this.sizeX = sizeX;
-            this.sizeY = sizeY;
-            this.mines = mines;
+            this.sizeX = difficulty.sizeX;
+            this.sizeY = difficulty.sizeY;
+            this.mines = difficulty.mines;
             this.displayPos = displayPos;
             this.map = new Field[sizeX, sizeY];
-            rnd = new Random(1337);
+            rnd = new Random();
             this.generate();
         }
 
@@ -70,6 +70,26 @@ namespace minesweeper_a_clone_client.util
                         break;
                     }
                 }
+            }
+            foreach (Field field in map)
+            {
+                field.calcMinesNerby();
+            }
+        }
+
+        public void revealAllFields()
+        {
+            foreach (Field field in map)
+            {
+                field.revealField();
+            }
+        }
+
+        public static void countFlags(ref Field[,] map)
+        {
+            foreach (Field field in map)
+            {
+
             }
         }
     }

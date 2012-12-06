@@ -11,7 +11,7 @@ namespace minesweeper_a_clone_client
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread()]
+        [STAThread()] //!!! IMPORTANT: WPF-Controls need STAThread !!!
         static void Main(string[] args)
         {
             

@@ -107,7 +107,7 @@ namespace minesweeper_a_clone_client
             {
                 vecTestPlayer = new Vector2(vecTestPlayer.X + 10, vecTestPlayer.Y);
             }
-            if(Keyboard.GetState().IsKeyDown(Keys.Left))
+            if (Keyboard.GetState().IsKeyDown(Keys.Left))
             {
                 vecTestPlayer = new Vector2(vecTestPlayer.X - 10, vecTestPlayer.Y);
             }

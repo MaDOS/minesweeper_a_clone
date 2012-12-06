@@ -7,8 +7,17 @@
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMainMenuTitle.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMainMenuTitle.xnb</Output>
       <Time>2012-11-14T21:46:45.572638+01:00</Time>
+    </Item>
+    <Item>
+      <Source>default\sprFntMinesNearby.spritefont</Source>
+      <Name>default\sprFntMinesNearby</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMinesNearby.xnb</Output>
+      <Time>2012-11-27T21:45:31.585443+01:00</Time>
     </Item>
     <Item>
       <Source>default\field_markedAsMine.bmp</Source>
@@ -16,7 +25,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedAsMine.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedAsMine.xnb</Output>
       <Time>2012-11-27T17:39:11.282058+01:00</Time>
     </Item>
     <Item>
@@ -25,7 +34,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedPossibleMine.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_markedPossibleMine.xnb</Output>
       <Time>2012-11-27T17:39:11.2910585+01:00</Time>
     </Item>
     <Item>
@@ -34,7 +43,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_none.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_none.xnb</Output>
       <Time>2012-11-27T17:39:11.3840639+01:00</Time>
     </Item>
     <Item>
@@ -43,7 +52,7 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_unrevealed.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_unrevealed.xnb</Output>
       <Time>2012-11-27T17:39:11.4120655+01:00</Time>
     </Item>
     <Item>
@@ -52,17 +61,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_mine.xnb</Output>
+      <Output>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\field_mine.xnb</Output>
       <Time>2012-11-27T18:54:43.1472659+01:00</Time>
-    </Item>
-    <Item>
-      <Source>default\sprFntMinesNearby.spritefont</Source>
-      <Name>default\sprFntMinesNearby</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\default\sprFntMinesNearby.xnb</Output>
-      <Time>2012-11-27T21:45:31.585443+01:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -70,10 +70,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\</RootDirectory>
-      <LoggerRootDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\</LoggerRootDirectory>
-      <IntermediateDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\</RootDirectory>
+      <LoggerRootDirectory>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_clientContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

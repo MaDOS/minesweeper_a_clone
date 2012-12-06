@@ -14,23 +14,23 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Markup;
 
-namespace minesweeper_a_clone_client
+namespace minesweeper_a_clone_client.manager
 {
     public class ThemeManager
     {
         public static Dictionary<string, Theme> themes = new Dictionary<string,Theme>();
         public static string currentTheme;
 
-        MainMenu mainMenu;
-        OptionsMenu optionsMenu;
-        HighscoreMenu highscoreMenu;
+        public static menus.MainMenu mainMenu;
+        public static menus.OptionsMenu optionsMenu;
+        public static menus.HighscoreMenu highscoreMenu;
 
-        public ThemeManager(ref MainMenu mainMenu_param, ref OptionsMenu optionsMenu_param, ref HighscoreMenu highscoreMenu_param)
-        {
-            this.mainMenu = mainMenu_param;
-            this.optionsMenu = optionsMenu_param;
-            this.highscoreMenu = highscoreMenu_param;
-        }
+        //public ThemeManager(ref menus.MainMenu mainMenu_param, ref OptionsMenu optionsMenu_param, ref HighscoreMenu highscoreMenu_param)
+        //{
+        //    this.mainMenu = mainMenu_param;
+        //    this.optionsMenu = optionsMenu_param;
+        //    this.highscoreMenu = highscoreMenu_param;
+        //}
 
         static void addTheme(string name, Theme theme)
         {
@@ -77,14 +77,14 @@ namespace minesweeper_a_clone_client
             return null;
         }
 
-        public void applyTheme(string name)
+        public static void applyTheme(string name)
         {
             mainMenu.Resources.MergedDictionaries.Clear();
             mainMenu.Resources.MergedDictionaries.Add(themes[name].xamlRes);
-            optionsMenu.Resources.MergedDictionaries.Clear();
-            optionsMenu.Resources.MergedDictionaries.Add(themes[name].xamlRes);
-            highscoreMenu.Resources.MergedDictionaries.Clear();
-            highscoreMenu.Resources.MergedDictionaries.Add(themes[name].xamlRes);
+            //optionsMenu.Resources.MergedDictionaries.Clear();
+            //optionsMenu.Resources.MergedDictionaries.Add(themes[name].xamlRes);
+            //highscoreMenu.Resources.MergedDictionaries.Clear();
+            //highscoreMenu.Resources.MergedDictionaries.Add(themes[name].xamlRes);
         }
     }
 }

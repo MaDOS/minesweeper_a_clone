@@ -22,36 +22,33 @@ namespace minesweeper_a_clone_client
     /// </summary>
     public partial class msgame : Microsoft.Xna.Framework.Game
     {
-        public static string Directory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         int screenHeihgt = 600, screenWidth = 800;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        GameState gsCurrentGamestate;
+        FpsCounter fps;
+        public gameScreens.MainMenu mainMenu;
+        public gameScreens.OptionsMenu optionMenu;
+        public gameScreens.HighscoreMenu highscoreMenu;
 
-        MainMenu mainMenu;
-        OptionsMenu optionsMenu;
-        HighscoreMenu highscoreMenu; 
-        ElementHost menuHost = new ElementHost();
+        public ElementHost menuHost = new ElementHost();
 
-        util.Minefield minefield;
-
-        ThemeManager themeManager;
-
-        enum GameState
-        {
-            mainMenu,
-            options,
-            highscores,
-            playing
-        }
+        public util.Minefield minefield;
 
         public msgame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
+            fps = new FpsCounter(this);
+            mainMenu = new gameScreens.MainMenu(this);
+            optionMenu = new gameScreens.OptionsMenu(this);
+            highscoreMenu = new gameScreens.HighscoreMenu(this);
+            Components.Add(mainMenu);
+            Components.Add(optionMenu);
+            Components.Add(highscoreMenu);
+            Components.Add(fps);
         }
 
         /// <summary>
@@ -71,23 +68,18 @@ namespace minesweeper_a_clone_client
             graphics.ApplyChanges();
 
             //draw main-menu after starting
-            gsCurrentGamestate = GameState.mainMenu;
-
-            mainMenu = new MainMenu();
-            optionsMenu = new OptionsMenu();
-            highscoreMenu = new HighscoreMenu();
+            manager.gameManager.currentGameState = manager.gameManager.GameState.mainMenu;
 
             menuHost.Location = new System.Drawing.Point(0, 0);
             menuHost.Name = "mainMenuHost";
             menuHost.Size = new System.Drawing.Size(800, 600);
             menuHost.TabIndex = 1;
             menuHost.Text = "mainMenuHost";
-            menuHost.Child = this.mainMenu;
+            menuHost.Child = this.mainMenu.menuControl;
             Control.FromHandle(Window.Handle).Controls.Add(menuHost);
 
-            themeManager = new ThemeManager(ref this.mainMenu, ref this.optionsMenu, ref this.highscoreMenu);
 
-            base.Initialize();;
+            base.Initialize();
         }
 
         /// <summary>
@@ -126,70 +118,37 @@ namespace minesweeper_a_clone_client
         protected override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
-            if (gsCurrentGamestate == GameState.playing) //in-game update
+            KeyboardState keyboard = Keyboard.GetState();
+            MouseState mouse = Mouse.GetState();
+
+            if (keyboard.IsKeyDown(Microsoft.Xna.Framework.Input.Keys.Escape))
             {
+                this.menuHost.Visible = true;
+                this.menuHost.Child = this.mainMenu.menuControl;
+                manager.gameManager.currentGameState = manager.gameManager.GameState.mainMenu;
+            }
+
+
+            if (manager.gameManager.currentGameState == manager.gameManager.GameState.playing) //in-game update
+            {
+                
                 //playing
-                this.minefield.Update(gameTime, Mouse.GetState());
+                this.minefield.Update(gameTime, mouse);
+
+                
+                if (manager.gameManager.currentGameState == manager.gameManager.GameState.lost) //lost
+                {
+                    this.minefield.revealAllFields();
+
+                }
+                else if (manager.gameManager.currentGameState == manager.gameManager.GameState.won) //won
+                {
+                    MessageBox.Show("Congratulations");
+                }
             }
             else
             {
                 //menu
-                switch (gsCurrentGamestate)
-                {
-                    case GameState.mainMenu: 
-                    //##################################################################main menu update
-                        if (guiManager.btnPlayPressed) //mainMenu - btnPlay
-                        {
-                            minefield = new util.Minefield(10, 10, 35, new Vector2(40.0f, 40.0f));
-                            this.menuHost.Visible = false;
-
-                            this.gsCurrentGamestate = GameState.playing;
-                            guiManager.btnPlayPressed = false;
-                        }
-                        else if (guiManager.btnOptionsPressed) //mainMenu - btnOptions
-                        {
-                            this.gsCurrentGamestate = GameState.options;
-                            this.menuHost.Child = this.optionsMenu;
-
-                            guiManager.btnOptionsPressed = false;
-                        }
-                        else if (guiManager.btnHighscoresPressed) //mainMenu - btnHighsocores
-                        {
-                            this.gsCurrentGamestate = GameState.highscores;
-                            this.menuHost.Child = this.highscoreMenu;
-
-                            guiManager.btnHighscoresPressed = false;
-                        }
-                        else if (guiManager.btnQuitPressed) //mainMenu - btnQuit
-                        {
-                            this.Exit();
-                        }
-                        break;
-                    case GameState.options:
-                    //##################################################################option menu update
-                        if (guiManager.btnBackPressed)
-                        {
-                            this.gsCurrentGamestate = GameState.mainMenu;
-                            this.menuHost.Child = this.mainMenu;
-                            guiManager.btnBackPressed = false;
-                        }
-
-                        if (guiManager.themeChanged)
-                        {
-                            themeManager.applyTheme(guiManager.newThemeName);
-                            guiManager.themeChanged = false;
-                        }
-                        break;
-                    case GameState.highscores:
-                        //##################################################################highscore menu upate
-                        if (guiManager.btnBackPressed)
-                        {
-                            this.gsCurrentGamestate = GameState.mainMenu;
-                            this.menuHost.Child = this.mainMenu;
-                            guiManager.btnBackPressed = false;
-                        }
-                        break;
-                }
             }
             
             base.Update(gameTime);
@@ -211,9 +170,10 @@ namespace minesweeper_a_clone_client
             // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            if (gsCurrentGamestate == GameState.playing) //in-game update
+            if (manager.gameManager.currentGameState == manager.gameManager.GameState.playing ||
+                manager.gameManager.currentGameState == manager.gameManager.GameState.won ||
+                manager.gameManager.currentGameState == manager.gameManager.GameState.lost) //in-game update
             {
-                //playing
                 this.minefield.Draw(gameTime, spriteBatch);
             }
 

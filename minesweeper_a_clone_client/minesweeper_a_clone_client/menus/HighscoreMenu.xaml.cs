@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace minesweeper_a_clone_client
+namespace minesweeper_a_clone_client.menus
 {
     /// <summary>
     /// Interaktionslogik für highscoreMenu.xaml
@@ -22,11 +22,6 @@ namespace minesweeper_a_clone_client
         public HighscoreMenu()
         {
             InitializeComponent();
-        }
-
-        private void btnHighscoresBack_Click(object sender, RoutedEventArgs e)
-        {
-            guiManager.btnBackPressed = true;
         }
     }
 }

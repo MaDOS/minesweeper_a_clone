@@ -4,7 +4,7 @@
 winexe
 C#
 .cs
-D:\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\obj\x86\Debug\
+E:\keep__\Docs\Schule\Info LK\minesweeper\minesweeper_a_clone\minesweeper_a_clone_client\minesweeper_a_clone_client\obj\x86\Debug\
 minesweeper_a_clone_client
 none
 false
@@ -12,7 +12,7 @@ DEBUG;TRACE;WINDOWS
 
 3-2961711
 9-177807724
-151178670099
+24-140737657
 23627800807
 menus\HighscoreMenu.xaml;menus\MainMenu.xaml;menus\OptionsMenu.xaml;
 

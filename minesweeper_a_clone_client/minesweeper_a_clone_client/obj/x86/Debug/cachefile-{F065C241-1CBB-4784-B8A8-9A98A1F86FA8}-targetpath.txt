@@ -1,7 +1,7 @@
 Content\default\sprFntMainMenuTitle.xnb
+Content\default\sprFntMinesNearby.xnb
 Content\default\field_markedAsMine.xnb
 Content\default\field_markedPossibleMine.xnb
 Content\default\field_none.xnb
 Content\default\field_unrevealed.xnb
 Content\default\field_mine.xnb
-Content\default\sprFntMinesNearby.xnb
